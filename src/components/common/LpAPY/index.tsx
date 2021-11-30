@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { trimPad } from 'utils/balances';
 import ReactTooltip from 'react-tooltip';
 import axios from 'axios';
@@ -114,11 +114,11 @@ export default function LpApy(props: Props) {
   const [rewardsApy, setRewardsApy] = React.useState('');
   const [feesApy, setFeesApy] = React.useState('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     getApy().then((p) => setApy(p));
     getRewardsApy().then((p) => setRewardsApy(p));
     getFeesApy().then((p) => setFeesApy(p));
-  });
+  }, []);
 
   return (
     <div className={styles.balance_container}>
